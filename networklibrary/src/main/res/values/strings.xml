@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">networklibrary</string>
+    <string name="snackbar_network_message">Unable to establish connection</string>
+    <string name="snackbar_data_message">Server Data Error</string>
+    <string name="snackbar_server_access">Access denied</string>
+    <string name="snackbar_server_authentication">Authentication failure</string>
+    <string name="snackbar_server_system">System error</string>
+    <string name="snackbar_server_message">Server error</string>
+    <string name="snackbar_action_log_in">Log In</string>
+
+    <!-- Update App -->
+    <string name="update_title">Update Required</string>
+    <string name="update_message">You seem to have an outdated version. Please update to proceed</string>
+
+    <string name="update">Update</string>
+
+</resources>
