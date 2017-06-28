@@ -12,16 +12,16 @@ import com.example.networklibrary.shared_preferences.PermanentPreferences;
  * Created by Harsha on 6/22/2017.
  */
 
-public class NetworkBaseUrl {
+public class NetworkLibrary {
 
-    private static NetworkBaseUrl instance;
+    private static NetworkLibrary instance;
 
     private Context context;
     private PreferenceManager privateManager;
 
-    public static void init(Context context) {
+    public static void init(Context context,String baseurl) {
         if (instance == null)
-            instance = new NetworkBaseUrl(context);
+            instance = new NetworkLibrary(context,baseurl);
     }
 
     public static void clearData() {
@@ -32,13 +32,14 @@ public class NetworkBaseUrl {
         }
     }
 
-    private NetworkBaseUrl(Context context) {
+    private NetworkLibrary(Context context,String baseurl) {
         this.context = context.getApplicationContext();
 
         privateManager = new PreferenceManager(context);
         privateManager.setSharedPreferencesName(PermanentPreferences.NAME);
         privateManager.setSharedPreferencesMode(Context.MODE_PRIVATE);
         privateManager.setStorageDeviceProtected();
+        setBaseUrl(baseurl);
     }
 
     public static void restartApp() {

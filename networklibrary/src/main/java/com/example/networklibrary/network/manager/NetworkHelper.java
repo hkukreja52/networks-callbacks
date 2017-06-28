@@ -18,7 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.example.networklibrary.NetworkBaseUrl;
+import com.example.networklibrary.NetworkLibrary;
 import com.example.networklibrary.R;
 import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.network.parsing.GsonRequest;
@@ -88,7 +88,7 @@ public class NetworkHelper<T> {
 
     protected GsonRequest createGsonRequest(@NonNull final Object requestTag, @NonNull MethodType type, @NonNull String endpoint, @Nullable T bodyParams, final Class<T> responseClass, @Nullable final Callback callback) {
         int methodType;
-        String url = NetworkBaseUrl.getBaseUrl() + endpoint;
+        String url = NetworkLibrary.getBaseUrl() + endpoint;
 
         switch (type) {
             case GET:
@@ -197,8 +197,8 @@ public class NetworkHelper<T> {
                         snackbar.setAction(R.string.snackbar_action_log_in, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                NetworkBaseUrl.clearData();
-                                NetworkBaseUrl.restartApp();
+                                NetworkLibrary.clearData();
+                                NetworkLibrary.restartApp();
                             }
                         });
                         break;
@@ -209,8 +209,8 @@ public class NetworkHelper<T> {
                         snackbar.setAction(R.string.snackbar_action_log_in, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                NetworkBaseUrl.clearData();
-                                NetworkBaseUrl.restartApp();
+                                NetworkLibrary.clearData();
+                                NetworkLibrary.restartApp();
                             }
                         });
                         break;
