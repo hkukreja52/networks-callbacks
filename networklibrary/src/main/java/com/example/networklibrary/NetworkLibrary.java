@@ -19,9 +19,9 @@ public class NetworkLibrary {
     private Context context;
     private PreferenceManager privateManager;
 
-    public static void init(Context context,String baseurl) {
+    public static void init(Context context, String baseurl) {
         if (instance == null)
-            instance = new NetworkLibrary(context,baseurl);
+            instance = new NetworkLibrary(context, baseurl);
     }
 
     public static void clearData() {
@@ -32,14 +32,14 @@ public class NetworkLibrary {
         }
     }
 
-    private NetworkLibrary(Context context,String baseurl) {
+    private NetworkLibrary(Context context, String baseurl) {
         this.context = context.getApplicationContext();
 
         privateManager = new PreferenceManager(context);
         privateManager.setSharedPreferencesName(PermanentPreferences.NAME);
         privateManager.setSharedPreferencesMode(Context.MODE_PRIVATE);
         privateManager.setStorageDeviceProtected();
-        setBaseUrl(baseurl);
+        //setBaseUrl(baseurl);
     }
 
     public static void restartApp() {
@@ -55,6 +55,6 @@ public class NetworkLibrary {
     }
 
     public static String getBaseUrl() {
-        return instance.privateManager.getSharedPreferences().getString(PermanentPreferences.BASE_URL,"");
+        return instance.privateManager.getSharedPreferences().getString(PermanentPreferences.BASE_URL, "");
     }
 }
