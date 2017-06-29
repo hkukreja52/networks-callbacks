@@ -39,6 +39,7 @@ public class NetworkLibrary {
         privateManager.setSharedPreferencesName(PermanentPreferences.NAME);
         privateManager.setSharedPreferencesMode(Context.MODE_PRIVATE);
         privateManager.setStorageDeviceProtected();
+        privateManager.getSharedPreferences().edit().putString(PermanentPreferences.BASE_URL, baseurl).apply();
         //setBaseUrl(baseurl);
     }
 
