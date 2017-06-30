@@ -165,7 +165,7 @@ public class NetworkHelper<T> {
         else
             status = Status.SUCCESS;
 
-        getResponse(responseObject);
+        getResponseData(status, responseObject);
         if (callback != null && !callback.onComplete(status, responseObject)) {
             View rootView = null;
 
@@ -181,7 +181,7 @@ public class NetworkHelper<T> {
         }
     }
 
-    public void getResponse(Object object){
+    public void getResponseData(Status status, Object object) {
     }
 
     private void showSnackbarError(@NonNull View rootView, @NonNull final Status status, @Nullable Response response) {
