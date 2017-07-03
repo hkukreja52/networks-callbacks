@@ -27,7 +27,7 @@ public class Response extends ResponseValidator {
     @SerializedName("status")
     private Boolean status;
     @SerializedName("error")
-    private HashMap<String, String[]> errors;
+    public  HashMap<String, String[]> errors;
 
     public Boolean getStatus() {
         return status;
