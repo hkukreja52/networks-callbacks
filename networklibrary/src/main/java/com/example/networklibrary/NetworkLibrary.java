@@ -9,6 +9,7 @@ import android.support.v7.preference.PreferenceManager;
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
 import java.util.Arrays;
+import java.util.EnumSet;
 
 
 /**
@@ -28,10 +29,19 @@ public class NetworkLibrary {
     }
 
 
-    public static <T extends Enum<T>> void set(T[] t) {
+    public static <T extends Enum<T>> void setArray(T[] t) {
         System.out.println("*****" + Arrays.asList(t));
         System.out.print("====");
     }
+
+    public static <T extends Enum<T>> void set(Class<T> t) {
+
+        for (T t1 : EnumSet.allOf(t)) {
+            System.out.print("***********" + t1.name());
+            System.out.print("***********" + t1.toString());
+        }
+    }
+
 
     public static void clearData() {
         if (instance != null) {
