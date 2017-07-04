@@ -24,6 +24,11 @@ public class NetworkLibrary {
             instance = new NetworkLibrary(context, baseurl);
     }
 
+
+    public <E extends Enum<E>> void set(Enum<E> type) {
+        System.out.print("*****" + type.name());
+    }
+
     public static void clearData() {
         if (instance != null) {
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(instance.context).edit();
