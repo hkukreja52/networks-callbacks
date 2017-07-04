@@ -176,12 +176,12 @@ public class NetworkHelper<T> {
             if (status == Status.SUCCESS) {
                 // Do nothing
             } else if (rootView != null) {
-                //howSnackbarError(rootView, status, response);
+                showSnackbarError(rootView, status, response);
             }
         }
     }
 
-  /*  private void showSnackbarError(@NonNull View rootView, @NonNull final Status status, @Nullable Response response) {
+    private void showSnackbarError(@NonNull View rootView, @NonNull final Status status, @Nullable Response response) {
         CustomSnackbar snackbar = new CustomSnackbar(context, rootView);
         snackbar.setMessageColor(R.color.white);
         snackbar.setActionColor(R.color.button_positive);
@@ -264,5 +264,5 @@ public class NetworkHelper<T> {
         }
 
         snackbar.show();
-    }*/
+    }
 }

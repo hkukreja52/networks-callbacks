@@ -37,6 +37,9 @@ public class NetworkLibrary {
         }
     }
 
+    public NetworkLibrary() {
+    }
+
     private NetworkLibrary(Context context, String baseurl) {
         this.context = context.getApplicationContext();
 

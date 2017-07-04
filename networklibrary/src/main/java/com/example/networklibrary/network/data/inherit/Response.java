@@ -10,19 +10,18 @@ import java.util.HashMap;
  * Created by aksha_000 on 12/24/2015.
  */
 public class Response extends ResponseValidator {
-   /* private static final String KEY_AUTHENTICATION = "Authentication";
+    private static final String KEY_AUTHENTICATION = "Authentication";
     private static final String KEY_ACCESS = "Access";
     private static final String KEY_SYSTEM = "System";
     private static final String KEY_VERSION = "version";
-*/
-   /* public enum Type {
+    public enum Type {
         AUTHENTICATION,
         ACCESS,
         SYSTEM,
         VERSION,
         NONE,
         UNKNOWN
-    }*/
+    }
 
     @SerializedName("status")
     private Boolean status;
@@ -36,7 +35,6 @@ public class Response extends ResponseValidator {
     public boolean hasErrors() {
         return errors != null;
     }
-/*
     public Type getErrorType() {
         Type type;
 
@@ -54,7 +52,7 @@ public class Response extends ResponseValidator {
             type = Type.UNKNOWN;
 
         return type;
-    }*/
+    }
 
     public String generateErrorMessage() {
         if (!hasErrors()) {
