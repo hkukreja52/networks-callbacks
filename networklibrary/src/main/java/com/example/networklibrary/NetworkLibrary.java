@@ -3,9 +3,12 @@ package com.example.networklibrary;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.Settings;
 import android.support.v7.preference.PreferenceManager;
 
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
+
+import java.util.Arrays;
 
 
 /**
@@ -25,8 +28,9 @@ public class NetworkLibrary {
     }
 
 
-    public <E extends Enum<E>> void set(Enum<E> type) {
-        System.out.print("*****" + type.name());
+    public static <T extends Enum<T>> void set(T[] t) {
+        System.out.println("*****" + Arrays.asList(t));
+        System.out.print("====");
     }
 
     public static void clearData() {
