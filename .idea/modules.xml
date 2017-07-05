@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/network-callbacks.iml" filepath="$PROJECT_DIR$/network-callbacks.iml" />
       <module fileurl="file://$PROJECT_DIR$/networklibrary/networklibrary.iml" filepath="$PROJECT_DIR$/networklibrary/networklibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/networklibrary/networklibrary.iml" filepath="$PROJECT_DIR$/networklibrary/networklibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/networks-callbacks.iml" filepath="$PROJECT_DIR$/networks-callbacks.iml" />
     </modules>
   </component>
 </project>

@@ -36,7 +36,7 @@ public class NetworkLibrary {
 
     public static <T extends Enum<T>> void set(Class<T> t) {
 
-        for (T t1 : EnumSet.allOf(t)) {
+        for (T t1 : t.getEnumConstants()) {
             System.out.print("***********" + t1.name());
             System.out.print("***********" + t1.toString());
         }
