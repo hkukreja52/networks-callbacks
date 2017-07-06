@@ -46,7 +46,7 @@ public class NetworkLibrary {
     public static <T extends Enum<T>> void doSomething(Class<T> clazz) {
         //EnumSet<T> all = EnumSet.allOf(clazz);
         for (T constant : clazz.getEnumConstants()) {
-            Response.Type.values()[clazz.getEnumConstants().length] = Response.Type.valueOf(constant.name());
+            Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
         }
 
         System.out.println("*****Size: " + Response.Type.values().length);
