@@ -3,14 +3,12 @@ package com.example.networklibrary;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.Settings;
 import android.support.v7.preference.PreferenceManager;
 
 import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
 import java.util.Arrays;
-import java.util.EnumSet;
 
 
 /**
@@ -47,7 +45,7 @@ public class NetworkLibrary {
         //EnumSet<T> all = EnumSet.allOf(clazz);
 
         for (int i = 0; i < clazz.getEnumConstants().length; i++) {
-            Response.Type.values()[i] = Response.Type.valueOf(clazz.getName());
+            Response.Type.values()[i] = Response.Type.valueOf(clazz.getEnumConstants()[i].name());
         }
 
         /*for (T constant : clazz.getEnumConstants()) {
