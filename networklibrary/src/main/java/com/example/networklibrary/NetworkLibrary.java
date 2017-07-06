@@ -8,6 +8,7 @@ import android.support.v7.preference.PreferenceManager;
 import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 
 
@@ -44,9 +45,17 @@ public class NetworkLibrary {
     public static <T extends Enum<T>> void doSomething(Class<T> clazz) {
         //EnumSet<T> all = EnumSet.allOf(clazz);
 
-        for (int i = 0; i < clazz.getEnumConstants().length; i++) {
+        /*for (int i = 0; i < clazz.getEnumConstants().length; i++) {
             Response.Type.values()[i] = Response.Type.valueOf(clazz.getEnumConstants()[i].name());
-        }
+        }*/
+
+        T[] t = clazz.getEnumConstants();
+        for (int i = 0; i < clazz.getEnumConstants().length; i++)
+            System.out.println("******Enum: " + t[i]);
+
+        Field[] field = clazz.getDeclaredFields();
+        for (int i = 0; i < clazz.getDeclaredFields().length; i++)
+            System.out.println("******Fields: " + field[i]);
 
         /*for (T constant : clazz.getEnumConstants()) {
             Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
