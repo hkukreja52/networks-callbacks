@@ -45,10 +45,6 @@ public class NetworkLibrary {
     public static <T extends Enum<T>> void doSomething(Class<T> clazz) {
         //EnumSet<T> all = EnumSet.allOf(clazz);
 
-        /*for (int i = 0; i < clazz.getEnumConstants().length; i++) {
-            Response.Type.values()[i] = Response.Type.valueOf(clazz.getEnumConstants()[i].name());
-        }*/
-
         T[] t = clazz.getEnumConstants();
         for (int i = 0; i < clazz.getEnumConstants().length; i++)
             System.out.println("******Enum: " + t[i]);
@@ -56,6 +52,10 @@ public class NetworkLibrary {
         Field[] field = clazz.getDeclaredFields();
         for (int i = 0; i < clazz.getDeclaredFields().length; i++)
             System.out.println("******Fields: " + field[i]);
+
+        for (int i = 0; i < clazz.getEnumConstants().length; i++) {
+            Response.Type.values()[i] = Response.Type.valueOf(t[i].toString());
+        }
 
         /*for (T constant : clazz.getEnumConstants()) {
             Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
