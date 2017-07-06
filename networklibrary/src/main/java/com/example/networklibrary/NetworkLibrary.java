@@ -9,7 +9,9 @@ import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -53,9 +55,14 @@ public class NetworkLibrary {
         for (int i = 0; i < clazz.getDeclaredFields().length; i++)
             System.out.println("******Fields: " + field[i]);
 
+        List<Response.Type> type = Arrays.asList(Response.Type.values());
         for (int i = 0; i < clazz.getEnumConstants().length; i++) {
-            Response.Type.values()[i] = Response.Type.valueOf(t[i].toString());
+            //Response.Type.values()[i] = Response.Type.valueOf(t[i].toString());
+            type.add(Response.Type.valueOf(t[i].toString()));
         }
+
+        for (int i = 0; i < type.size(); i++)
+            System.out.println("******Type: " + type.get(i));
 
         /*for (T constant : clazz.getEnumConstants()) {
             Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
