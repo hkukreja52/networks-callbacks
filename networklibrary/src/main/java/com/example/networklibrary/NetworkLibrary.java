@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.support.v7.preference.PreferenceManager;
 
+import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
 import java.util.Arrays;
@@ -37,11 +38,19 @@ public class NetworkLibrary {
     public static <T extends Enum<T>> void set(Class<T> t) {
 
         for (T t1 : t.getEnumConstants()) {
-            System.out.print("***********" + t1.name());
-            System.out.print("***********" + t1.toString());
+            System.out.println("***********" + t1.name());
+            System.out.println("***********" + t1.toString());
         }
     }
 
+    public static <T extends Enum<T>> void doSomething(Class<T> clazz) {
+        //EnumSet<T> all = EnumSet.allOf(clazz);
+        for (T constant : clazz.getEnumConstants()) {
+            Response.Type.values()[clazz.getEnumConstants().length] = Response.Type.valueOf(constant.name());
+        }
+
+        System.out.println("*****Size: " + Response.Type.values().length);
+    }
 
     public static void clearData() {
         if (instance != null) {

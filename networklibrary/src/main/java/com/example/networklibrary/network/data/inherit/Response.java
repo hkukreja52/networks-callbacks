@@ -14,6 +14,7 @@ public class Response extends ResponseValidator {
     private static final String KEY_ACCESS = "Access";
     private static final String KEY_SYSTEM = "System";
     private static final String KEY_VERSION = "version";
+
     public enum Type {
         AUTHENTICATION,
         ACCESS,
