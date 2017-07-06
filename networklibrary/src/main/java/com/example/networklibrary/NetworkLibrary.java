@@ -11,6 +11,7 @@ import com.example.networklibrary.shared_preferences.PermanentPreferences;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -55,7 +56,7 @@ public class NetworkLibrary {
         for (int i = 0; i < clazz.getDeclaredFields().length; i++)
             System.out.println("******Fields: " + field[i]);
 
-        List<Response.Type> type = Arrays.asList(Response.Type.values());
+        List<Response.Type> type = new LinkedList<Response.Type>(Arrays.asList(Response.Type.values()));
         for (int i = 0; i < clazz.getEnumConstants().length; i++) {
             //Response.Type.values()[i] = Response.Type.valueOf(t[i].toString());
             type.add(Response.Type.valueOf(t[i].toString()));
