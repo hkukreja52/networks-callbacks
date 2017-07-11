@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Harsha on 6/22/2017.
  */
 
-public class NetworkLibrary {
+public class NetworkLibrary<T> {
 
     private static NetworkLibrary instance;
 
@@ -49,8 +49,16 @@ public class NetworkLibrary {
         //EnumSet<T> all = EnumSet.allOf(clazz);
 
         T[] t = clazz.getEnumConstants();
-        for (int i = 0; i < clazz.getEnumConstants().length; i++)
+        for (int i = 0; i < clazz.getEnumConstants().length; i++) {
             System.out.println("******Enum: " + t[i]);
+           // E1toE2(t[i]);
+
+            //Response.Type type = E1toE2(t[i]);
+
+
+            E1toE2(t[i]);
+
+        }
 
         Field[] field = clazz.getDeclaredFields();
         for (int i = 0; i < clazz.getDeclaredFields().length; i++)
@@ -65,11 +73,16 @@ public class NetworkLibrary {
         for (int i = 0; i < type.size(); i++)
             System.out.println("******Type: " + type.get(i));
 
-        /*for (T constant : clazz.getEnumConstants()) {
-            Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
-        }*/
+        for (T constant : clazz.getEnumConstants()) {
+            //Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
+        }
 
         System.out.println("*****Size: " + Response.Type.values().length);
+    }
+
+    private static <T extends Enum<T>> void E1toE2(T t) {
+        Response.Type.values()[t.ordinal()] = Response.Type.valueOf(t.name());
+        //return Response.Type.values()[t.ordinal()];
     }
 
     public static void clearData() {

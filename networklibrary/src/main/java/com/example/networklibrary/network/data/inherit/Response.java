@@ -1,10 +1,13 @@
 package com.example.networklibrary.network.data.inherit;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.text.TextUtils;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by aksha_000 on 12/24/2015.
@@ -21,13 +24,33 @@ public class Response extends ResponseValidator {
         SYSTEM,
         VERSION,
         NONE,
-        UNKNOWN
+        UNKNOWN;
+
+        /*public static Map<String, Type> typeMapping = new HashMap<>();
+
+        static {
+            typeMapping.put(KEY_AUTHENTICATION, AUTHENTICATION);
+            typeMapping.put(KEY_ACCESS, ACCESS);
+            typeMapping.put(KEY_SYSTEM, SYSTEM);
+            typeMapping.put(KEY_VERSION, VERSION);
+        }
+
+        public static Type getType(String typeName) {
+            if (typeMapping.get(typeName) == null) {
+                throw new RuntimeException(String.format("There is no Type mapping with name (%s)"));
+            }
+            return typeMapping.get(typeName);
+        }
+
+        public static void setType(String key, String value) {
+            typeMapping.put(key, Type.valueOf(value));
+        }*/
     }
 
     @SerializedName("status")
     private Boolean status;
     @SerializedName("error")
-    public  HashMap<String, String[]> errors;
+    public HashMap<String, String[]> errors;
 
     public Boolean getStatus() {
         return status;
@@ -36,6 +59,7 @@ public class Response extends ResponseValidator {
     public boolean hasErrors() {
         return errors != null;
     }
+
     public Type getErrorType() {
         Type type;
 
