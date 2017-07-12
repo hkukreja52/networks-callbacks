@@ -8,12 +8,13 @@ import java.util.TreeMap;
  * Created by Hemant on 7/12/2017.
  */
 
-public enum Type implements TypeInterface {
+public enum Type implements ErrorType {
 
     AUTHENTICATION("AUTHENTICATION", "Authentication"),
     ACCESS("ACCESS", "Access"),
     SYSTEM("SYSTEM", "System"),
     VERSION("VERSION", "version"),
+    NETWORK("NETWORK","Network"),
     NONE("NONE", "None"),
     UNKNOWN("UNKNOWN", "Unknown");
 
@@ -33,25 +34,21 @@ public enum Type implements TypeInterface {
         return typeValue;
     }
 
-    private static Map<String, TypeInterface> map = new TreeMap<String, TypeInterface>();
+    public static Map<String, ErrorType> map = new TreeMap<String, ErrorType>();
 
     static {
-        for (TypeInterface type : values()) {
+        for (ErrorType type : values()) {
             map.put(type.getTypeKey(), type);
         }
     }
 
-    public static TypeInterface typeFor(String typeName) {
+    public static ErrorType typeFor(String typeName) {
         return map.get(typeName);
     }
 
-    public static void addNewType(TypeInterface type) {
+    /*public static void addNewType(TypeInterface type) {
         if (!map.containsKey(type.getTypeKey())) {
             map.put(type.getTypeKey(), type);
         }
-    }
-
-    public static Collection<TypeInterface> types() {
-        return map.values();
-    }
+    }*/
 }

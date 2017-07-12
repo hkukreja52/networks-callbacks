@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import com.example.networklibrary.ErrorType;
 import com.example.networklibrary.Type;
-import com.example.networklibrary.TypeInterface;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
@@ -42,11 +42,11 @@ public class Response extends ResponseValidator {
         return errors != null;
     }
 
-    public boolean containsError(String type) {
+    public boolean containsError(ErrorType type) {
 
         if (hasErrors()) {
-            TypeInterface typeInterface = Type.typeFor(type);
-            return errors.containsKey(typeInterface.getTypeKey());
+            ErrorType errorType = Type.typeFor(type.toString());
+            return errors.containsKey(errorType.getTypeKey());
         }
 
         return false;
@@ -57,14 +57,14 @@ public class Response extends ResponseValidator {
 
         if (!hasErrors())
             type = Type.NONE;
-        else if (errors.containsKey(KEY_AUTHENTICATION))
+        /*else if (errors.containsKey(KEY_AUTHENTICATION))
             type = Type.AUTHENTICATION;
         else if (errors.containsKey(KEY_VERSION))
             type = Type.VERSION;
         else if (errors.containsKey(KEY_ACCESS))
             type = Type.ACCESS;
         else if (errors.containsKey(KEY_SYSTEM))
-            type = Type.SYSTEM;
+            type = Type.SYSTEM;*/
         else
             type = Type.UNKNOWN;
 
