@@ -18,8 +18,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.example.networklibrary.ErrorType;
 import com.example.networklibrary.NetworkLibrary;
 import com.example.networklibrary.R;
+import com.example.networklibrary.Type;
 import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.network.parsing.GsonRequest;
 import com.example.networklibrary.shared_preferences.PreferenceKeys;
@@ -29,6 +31,7 @@ import com.google.gson.JsonParseException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -120,11 +123,13 @@ public class NetworkHelper<T> {
                         Log.e(TAG, "parsing error", error.getCause());
                         invalidData = true;
                         response = null;
-                    } else {
+                    }
+                    else {
                         Log.e(TAG, "error", error);
                         response = new Gson().fromJson(new String(error.networkResponse.data), responseClass);
                     }
-                } catch (Throwable e) {
+                }
+                catch (Throwable e) {
                     Log.e(TAG, "error", e);
                     response = null;
                 }
@@ -175,7 +180,8 @@ public class NetworkHelper<T> {
 
             if (status == Status.SUCCESS) {
                 // Do nothing
-            } else if (rootView != null) {
+            }
+            else if (rootView != null) {
                 showSnackbarError(rootView, status, response);
             }
         }
@@ -191,8 +197,8 @@ public class NetworkHelper<T> {
                 snackbar.setMessage(R.string.snackbar_network_message);
                 break;
             case ERROR_SERVER:
-                switch (response.getErrorType()) {
-                    case ACCESS:
+                switch (response.checkErrorType()) {
+                    case "Access":
                         snackbar.setMessage(R.string.snackbar_server_access);
                         snackbar.setAction(R.string.snackbar_action_log_in, new View.OnClickListener() {
                             @Override
@@ -203,7 +209,7 @@ public class NetworkHelper<T> {
                         });
                         break;
 
-                    case AUTHENTICATION:
+                    case "Authentication":
                         snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
                         snackbar.setMessage(R.string.snackbar_server_authentication);
                         snackbar.setAction(R.string.snackbar_action_log_in, new View.OnClickListener() {
@@ -215,14 +221,14 @@ public class NetworkHelper<T> {
                         });
                         break;
 
-                    case SYSTEM:
+                    case "System":
                         if (response.hasErrors())
                             snackbar.setMessage(response.generateErrorMessage());
                         else
                             snackbar.setMessage(R.string.snackbar_server_system);
                         break;
 
-                    case VERSION:
+                    case "Version":
                         if (response.hasErrors())
                             snackbar.setMessage(response.generateErrorMessage());
                         else
@@ -238,14 +244,14 @@ public class NetworkHelper<T> {
                                 String packageName = context.getPackageName();
                                 try {
                                     context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-                                } catch (Throwable e) {
+                                }
+                                catch (Throwable e) {
                                     context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
                                 }
                             }
                         });
                         break;
-
-                    case UNKNOWN:
+                    case "Unknown":
                         if (response.hasErrors())
                             snackbar.setMessage(response.generateErrorMessage());
                         else

@@ -25,19 +25,16 @@ public class NetworkLibrary {
             instance = new NetworkLibrary(context, baseurl);
 
             for (int i = 0; i < type.length; i++) {
-                addNewType(type[i]);
+                addNewErrorType(type[i]);
             }
         }
     }
 
-    public static void init(Context context, String baseurl) {
-        if (instance == null)
-            instance = new NetworkLibrary(context, baseurl);
-    }
-
-    public static void addNewType(ErrorType type) {
-        if (!map.containsKey(type.getTypeKey())) {
-            map.put(type.getTypeKey(), type);
+    public static void addNewErrorType(ErrorType... type) {
+        for (int i = 0; i < type.length; i++) {
+            if (!map.containsKey(type[i])) {
+                map.put(type[i].getTypeKey(), type[i]);
+            }
         }
     }
 

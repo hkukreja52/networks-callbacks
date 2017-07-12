@@ -10,15 +10,18 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by aksha_000 on 12/24/2015.
  */
 public class Response extends ResponseValidator {
-    private static final String KEY_AUTHENTICATION = "Authentication";
+    /*private static final String KEY_AUTHENTICATION = "Authentication";
     private static final String KEY_ACCESS = "Access";
     private static final String KEY_SYSTEM = "System";
-    private static final String KEY_VERSION = "version";
+    private static final String KEY_VERSION = "version";*/
+
+    private static final String KEY_NETWORK = "Network";
 
     /*public enum Type {
         AUTHENTICATION,
@@ -52,6 +55,20 @@ public class Response extends ResponseValidator {
         return false;
     }
 
+    public String checkErrorType() {
+
+        if (hasErrors()) {
+            for (String key : errors.keySet()) {
+                if (errors.containsKey(Type.typeFor(key).getTypeValue()))
+                    return key;
+                else
+                    return "Unknown";
+            }
+        }
+
+        return "None";
+    }
+
     public Type getErrorType() {
         Type type;
 
@@ -65,6 +82,8 @@ public class Response extends ResponseValidator {
             type = Type.ACCESS;
         else if (errors.containsKey(KEY_SYSTEM))
             type = Type.SYSTEM;*/
+        else if (errors.containsKey(KEY_NETWORK))
+            type = Type.NETWORK;
         else
             type = Type.UNKNOWN;
 

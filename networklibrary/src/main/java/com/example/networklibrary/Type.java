@@ -10,10 +10,10 @@ import java.util.TreeMap;
 
 public enum Type implements ErrorType {
 
-    AUTHENTICATION("AUTHENTICATION", "Authentication"),
+    /*AUTHENTICATION("AUTHENTICATION", "Authentication"),
     ACCESS("ACCESS", "Access"),
     SYSTEM("SYSTEM", "System"),
-    VERSION("VERSION", "version"),
+    VERSION("VERSION", "version"),*/
     NETWORK("NETWORK","Network"),
     NONE("NONE", "None"),
     UNKNOWN("UNKNOWN", "Unknown");
