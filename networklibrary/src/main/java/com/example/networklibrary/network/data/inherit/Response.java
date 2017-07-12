@@ -42,10 +42,12 @@ public class Response extends ResponseValidator {
         return errors != null;
     }
 
-    public boolean containsError(Type type) {
+    public boolean containsError(String type) {
 
-        if (hasErrors())
-            return errors.containsKey(type.toString());
+        if (hasErrors()) {
+            TypeInterface typeInterface = Type.typeFor(type);
+            return errors.containsKey(typeInterface.getTypeKey());
+        }
 
         return false;
     }

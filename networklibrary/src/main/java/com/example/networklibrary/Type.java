@@ -1,5 +1,6 @@
 package com.example.networklibrary;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -48,5 +49,9 @@ public enum Type implements TypeInterface {
         if (!map.containsKey(type.getTypeKey())) {
             map.put(type.getTypeKey(), type);
         }
+    }
+
+    public static Collection<TypeInterface> types() {
+        return map.values();
     }
 }
