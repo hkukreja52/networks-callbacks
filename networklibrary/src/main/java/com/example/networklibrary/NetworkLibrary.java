@@ -32,7 +32,7 @@ public class NetworkLibrary {
 
     public static void addNewErrorType(ErrorType... type) {
         for (int i = 0; i < type.length; i++) {
-            if (!map.containsKey(type[i])) {
+            if (!map.containsKey(type[i].getTypeKey())) {
                 map.put(type[i].getTypeKey(), type[i]);
             }
         }
