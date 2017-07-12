@@ -3,6 +3,7 @@ package com.example.networklibrary.network.data.inherit;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.networklibrary.ErrorType;
 import com.example.networklibrary.Type;
@@ -59,7 +60,10 @@ public class Response extends ResponseValidator {
 
         if (hasErrors()) {
             for (String key : errors.keySet()) {
-                if (errors.containsKey(Type.typeFor(key).getTypeValue()))
+                ErrorType errorType = Type.typeFor(key);
+                Log.e("Error Type : ", "" + errorType.getTypeKey());
+                Log.e("Error Type : ", "" + errorType.getTypeValue());
+                if (errors.containsKey(errorType.getTypeValue()))
                     return key;
                 else
                     return "Unknown";
