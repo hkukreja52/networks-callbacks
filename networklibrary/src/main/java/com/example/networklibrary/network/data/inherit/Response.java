@@ -50,7 +50,7 @@ public class Response extends ResponseValidator {
 
         if (hasErrors()) {
             ErrorType errorType = Type.typeFor(type.toString());
-            return errors.containsKey(errorType.getTypeKey());
+            return errors.containsKey(errorType.getTypeValue());
         }
 
         return false;
