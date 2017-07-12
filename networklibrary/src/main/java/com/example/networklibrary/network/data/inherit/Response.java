@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
+import com.example.networklibrary.Type;
+import com.example.networklibrary.TypeInterface;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
@@ -18,34 +20,14 @@ public class Response extends ResponseValidator {
     private static final String KEY_SYSTEM = "System";
     private static final String KEY_VERSION = "version";
 
-    public enum Type {
+    /*public enum Type {
         AUTHENTICATION,
         ACCESS,
         SYSTEM,
         VERSION,
         NONE,
-        UNKNOWN;
-
-        /*public static Map<String, Type> typeMapping = new HashMap<>();
-
-        static {
-            typeMapping.put(KEY_AUTHENTICATION, AUTHENTICATION);
-            typeMapping.put(KEY_ACCESS, ACCESS);
-            typeMapping.put(KEY_SYSTEM, SYSTEM);
-            typeMapping.put(KEY_VERSION, VERSION);
-        }
-
-        public static Type getType(String typeName) {
-            if (typeMapping.get(typeName) == null) {
-                throw new RuntimeException(String.format("There is no Type mapping with name (%s)"));
-            }
-            return typeMapping.get(typeName);
-        }
-
-        public static void setType(String key, String value) {
-            typeMapping.put(key, Type.valueOf(value));
-        }*/
-    }
+        UNKNOWN
+   }*/
 
     @SerializedName("status")
     private Boolean status;

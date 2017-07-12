@@ -5,21 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.preference.PreferenceManager;
 
-import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
-
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
 
 /**
  * Created by Harsha on 6/22/2017.
  */
 
-public class NetworkLibrary<T> {
+public class NetworkLibrary {
 
     private static NetworkLibrary instance;
 
@@ -29,60 +21,6 @@ public class NetworkLibrary<T> {
     public static void init(Context context, String baseurl) {
         if (instance == null)
             instance = new NetworkLibrary(context, baseurl);
-    }
-
-
-    public static <T extends Enum<T>> void setArray(T[] t) {
-        System.out.println("*****" + Arrays.asList(t));
-        System.out.print("====");
-    }
-
-    public static <T extends Enum<T>> void set(Class<T> t) {
-
-        for (T t1 : t.getEnumConstants()) {
-            System.out.println("***********" + t1.name());
-            System.out.println("***********" + t1.toString());
-        }
-    }
-
-    public static <T extends Enum<T>> void doSomething(Class<T> clazz) {
-        //EnumSet<T> all = EnumSet.allOf(clazz);
-
-        T[] t = clazz.getEnumConstants();
-        for (int i = 0; i < clazz.getEnumConstants().length; i++) {
-            System.out.println("******Enum: " + t[i]);
-           // E1toE2(t[i]);
-
-            //Response.Type type = E1toE2(t[i]);
-
-
-            E1toE2(t[i]);
-
-        }
-
-        Field[] field = clazz.getDeclaredFields();
-        for (int i = 0; i < clazz.getDeclaredFields().length; i++)
-            System.out.println("******Fields: " + field[i]);
-
-        List<Response.Type> type = new LinkedList<Response.Type>(Arrays.asList(Response.Type.values()));
-        for (int i = 0; i < clazz.getEnumConstants().length; i++) {
-            //Response.Type.values()[i] = Response.Type.valueOf(t[i].toString());
-            type.add(Response.Type.valueOf(t[i].toString()));
-        }
-
-        for (int i = 0; i < type.size(); i++)
-            System.out.println("******Type: " + type.get(i));
-
-        for (T constant : clazz.getEnumConstants()) {
-            //Response.Type.values()[Response.Type.values().length + 1] = Response.Type.valueOf(constant.name());
-        }
-
-        System.out.println("*****Size: " + Response.Type.values().length);
-    }
-
-    private static <T extends Enum<T>> void E1toE2(T t) {
-        Response.Type.values()[t.ordinal()] = Response.Type.valueOf(t.name());
-        //return Response.Type.values()[t.ordinal()];
     }
 
     public static void clearData() {
