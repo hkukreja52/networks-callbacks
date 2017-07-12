@@ -60,7 +60,7 @@ public class Response extends ResponseValidator {
 
         if (hasErrors()) {
             for (String key : errors.keySet()) {
-                ErrorType errorType = Type.typeFor(key);
+                ErrorType errorType = Type.typeFor(key.toUpperCase());
                 Log.e("Error Type : ", "" + errorType.getTypeKey());
                 Log.e("Error Type : ", "" + errorType.getTypeValue());
                 if (errors.containsKey(errorType.getTypeValue()))
