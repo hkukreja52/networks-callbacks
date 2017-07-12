@@ -42,6 +42,14 @@ public class Response extends ResponseValidator {
         return errors != null;
     }
 
+    public boolean containsError(Type type) {
+
+        if (hasErrors())
+            return errors.containsKey(type.toString());
+
+        return false;
+    }
+
     public Type getErrorType() {
         Type type;
 
