@@ -1,6 +1,5 @@
 package com.example.networklibrary;
 
-import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -8,20 +7,16 @@ import java.util.TreeMap;
  * Created by Hemant on 7/12/2017.
  */
 
-public enum Type implements ErrorType {
+public enum DefaultErrorTypes implements ErrorType {
 
-    /*AUTHENTICATION("AUTHENTICATION", "Authentication"),
-    ACCESS("ACCESS", "Access"),
-    SYSTEM("SYSTEM", "System"),
-    VERSION("VERSION", "version"),*/
-    NETWORK("NETWORK","Network"),
+    NETWORK("NETWORK", "Network"),
     NONE("NONE", "None"),
     UNKNOWN("UNKNOWN", "Unknown");
 
     private String typeName;
     private String typeValue;
 
-    Type(String typeName, String typeValue) {
+    DefaultErrorTypes(String typeName, String typeValue) {
         this.typeName = typeName;
         this.typeValue = typeValue;
     }
@@ -45,10 +40,4 @@ public enum Type implements ErrorType {
     public static ErrorType typeFor(String typeName) {
         return map.get(typeName);
     }
-
-    /*public static void addNewType(TypeInterface type) {
-        if (!map.containsKey(type.getTypeKey())) {
-            map.put(type.getTypeKey(), type);
-        }
-    }*/
 }

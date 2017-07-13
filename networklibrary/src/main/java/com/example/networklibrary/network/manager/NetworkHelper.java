@@ -18,10 +18,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.example.networklibrary.ErrorType;
 import com.example.networklibrary.NetworkLibrary;
 import com.example.networklibrary.R;
-import com.example.networklibrary.Type;
 import com.example.networklibrary.network.data.inherit.Response;
 import com.example.networklibrary.network.parsing.GsonRequest;
 import com.example.networklibrary.shared_preferences.PreferenceKeys;
@@ -31,7 +29,6 @@ import com.google.gson.JsonParseException;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 
 /**

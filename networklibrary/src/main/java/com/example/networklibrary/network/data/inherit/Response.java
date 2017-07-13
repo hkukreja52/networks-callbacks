@@ -1,37 +1,19 @@
 package com.example.networklibrary.network.data.inherit;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.networklibrary.ErrorType;
-import com.example.networklibrary.Type;
+import com.example.networklibrary.DefaultErrorTypes;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by aksha_000 on 12/24/2015.
  */
 public class Response extends ResponseValidator {
-    /*private static final String KEY_AUTHENTICATION = "Authentication";
-    private static final String KEY_ACCESS = "Access";
-    private static final String KEY_SYSTEM = "System";
-    private static final String KEY_VERSION = "version";*/
-
     private static final String KEY_NETWORK = "Network";
-
-    /*public enum Type {
-        AUTHENTICATION,
-        ACCESS,
-        SYSTEM,
-        VERSION,
-        NONE,
-        UNKNOWN
-   }*/
 
     @SerializedName("status")
     private Boolean status;
@@ -49,7 +31,7 @@ public class Response extends ResponseValidator {
     public boolean containsError(ErrorType type) {
 
         if (hasErrors()) {
-            ErrorType errorType = Type.typeFor(type.toString());
+            ErrorType errorType = DefaultErrorTypes.typeFor(type.toString());
             return errors.containsKey(errorType.getTypeValue());
         }
 
@@ -60,9 +42,7 @@ public class Response extends ResponseValidator {
 
         if (hasErrors()) {
             for (String key : errors.keySet()) {
-                ErrorType errorType = Type.typeFor(key.toUpperCase());
-                Log.e("Error Type : ", "" + errorType.getTypeKey());
-                Log.e("Error Type : ", "" + errorType.getTypeValue());
+                ErrorType errorType = DefaultErrorTypes.typeFor(key.toUpperCase());
                 if (errors.containsKey(errorType.getTypeValue()))
                     return key;
                 else
@@ -73,23 +53,15 @@ public class Response extends ResponseValidator {
         return "None";
     }
 
-    public Type getErrorType() {
-        Type type;
+    public DefaultErrorTypes getErrorType() {
+        DefaultErrorTypes type;
 
         if (!hasErrors())
-            type = Type.NONE;
-        /*else if (errors.containsKey(KEY_AUTHENTICATION))
-            type = Type.AUTHENTICATION;
-        else if (errors.containsKey(KEY_VERSION))
-            type = Type.VERSION;
-        else if (errors.containsKey(KEY_ACCESS))
-            type = Type.ACCESS;
-        else if (errors.containsKey(KEY_SYSTEM))
-            type = Type.SYSTEM;*/
+            type = DefaultErrorTypes.NONE;
         else if (errors.containsKey(KEY_NETWORK))
-            type = Type.NETWORK;
+            type = DefaultErrorTypes.NETWORK;
         else
-            type = Type.UNKNOWN;
+            type = DefaultErrorTypes.UNKNOWN;
 
         return type;
     }

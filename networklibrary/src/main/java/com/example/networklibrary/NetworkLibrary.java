@@ -7,7 +7,7 @@ import android.support.v7.preference.PreferenceManager;
 
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
-import static com.example.networklibrary.Type.map;
+import static com.example.networklibrary.DefaultErrorTypes.map;
 
 /**
  * Created by Harsha on 6/22/2017.
@@ -44,9 +44,6 @@ public class NetworkLibrary {
             editor.clear();
             editor.apply();
         }
-    }
-
-    public NetworkLibrary() {
     }
 
     private NetworkLibrary(Context context, String baseurl) {

@@ -6,7 +6,7 @@ package com.example.networklibrary;
 
 public interface ErrorType {
 
-    public String getTypeKey();
+    String getTypeKey();
 
-    public String getTypeValue();
+    String getTypeValue();
 }
