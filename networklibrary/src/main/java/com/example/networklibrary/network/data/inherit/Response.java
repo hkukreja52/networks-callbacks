@@ -14,6 +14,8 @@ import java.util.HashMap;
  */
 public class Response extends ResponseValidator {
     private static final String KEY_NETWORK = "Network";
+    private static final String KEY_UNKNOWN = "Unknown";
+    private static final String KEY_NONE = "None";
 
     @SerializedName("status")
     private Boolean status;
@@ -32,7 +34,8 @@ public class Response extends ResponseValidator {
 
         if (hasErrors()) {
             ErrorType errorType = DefaultErrorTypes.typeFor(type.toString());
-            return errors.containsKey(errorType.getTypeValue());
+            if (errorType != null)
+                return errors.containsKey(errorType.getTypeValue());
         }
 
         return false;
@@ -46,11 +49,11 @@ public class Response extends ResponseValidator {
                 if (errorType != null && errors.containsKey(errorType.getTypeValue()))
                     return key;
                 else
-                    return "Unknown";
+                    return KEY_UNKNOWN;
             }
         }
 
-        return "None";
+        return KEY_NONE;
     }
 
     public DefaultErrorTypes getErrorType() {
