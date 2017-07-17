@@ -35,7 +35,7 @@ public enum DefaultErrorTypes implements ErrorType {
 
     public static ErrorType typeFor(String typeName) {
         for (int i = 0; i < typeList.size(); i++) {
-            if (typeName.equals(typeList.get(i).getTypeValue()))
+            if (typeName.equalsIgnoreCase(typeList.get(i).getTypeValue()))
                 return typeList.get(i);
         }
         return null;
