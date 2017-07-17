@@ -7,7 +7,8 @@ import android.support.v7.preference.PreferenceManager;
 
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
-import static com.example.networklibrary.DefaultErrorTypes.map;
+import static com.example.networklibrary.DefaultErrorTypes.typeList;
+
 
 /**
  * Created by Harsha on 6/22/2017.
@@ -32,8 +33,8 @@ public class NetworkLibrary {
 
     public static void addNewErrorType(ErrorType... type) {
         for (int i = 0; i < type.length; i++) {
-            if (!map.containsKey(type[i].getTypeKey())) {
-                map.put(type[i].getTypeKey(), type[i]);
+            if (!typeList.get(i).getTypeValue().equals(type[i])) {
+                typeList.add(type[i]);
             }
         }
     }
