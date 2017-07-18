@@ -35,7 +35,7 @@ public class Response extends ResponseValidator {
         if (hasErrors()) {
             ErrorType errorType = DefaultErrorTypes.typeFor(type.toString());
             if (errorType != null)
-                return errors.containsKey(errorType.getTypeValue());
+                return errors.containsKey(errorType.getErrorTypeKey());
         }
 
         return false;
@@ -46,7 +46,7 @@ public class Response extends ResponseValidator {
         if (hasErrors()) {
             for (String key : errors.keySet()) {
                 ErrorType errorType = DefaultErrorTypes.typeFor(key);
-                if (errorType != null && errors.containsKey(errorType.getTypeValue()))
+                if (errorType != null && errors.containsKey(errorType.getErrorTypeKey()))
                     return key;
                 else
                     return KEY_UNKNOWN;
