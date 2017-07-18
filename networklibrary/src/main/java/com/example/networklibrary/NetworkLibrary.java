@@ -26,14 +26,14 @@ public class NetworkLibrary {
             instance = new NetworkLibrary(context, baseurl);
 
             for (int i = 0; i < type.length; i++) {
-                addNewErrorType(type[i]);
+                addNewErrorTypes(type[i]);
             }
         }
     }
 
-    public static void addNewErrorType(ErrorType... type) {
+    public static void addNewErrorTypes(ErrorType... type) {
         for (int i = 0; i < type.length; i++) {
-            if (!typeList.get(i).getTypeValue().equals(type[i])) {
+            if (!typeList.get(i).getErrorTypeKey().equals(type[i])) {
                 typeList.add(type[i]);
             }
         }

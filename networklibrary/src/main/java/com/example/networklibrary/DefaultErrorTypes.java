@@ -15,14 +15,14 @@ public enum DefaultErrorTypes implements ErrorType {
     NONE("None"),
     UNKNOWN("Unknown");
 
-    private String typeValue;
+    private String errorTypeKey;
 
-    DefaultErrorTypes(String typeValue) {
-        this.typeValue = typeValue;
+    DefaultErrorTypes(String errorTypeKey) {
+        this.errorTypeKey = errorTypeKey;
     }
 
-    @Override public String getTypeValue() {
-        return typeValue;
+    @Override public String getErrorTypeKey() {
+        return errorTypeKey;
     }
 
     public static ArrayList<ErrorType> typeList = new ArrayList<>();
@@ -35,7 +35,7 @@ public enum DefaultErrorTypes implements ErrorType {
 
     public static ErrorType typeFor(String typeName) {
         for (int i = 0; i < typeList.size(); i++) {
-            if (typeName.equalsIgnoreCase(typeList.get(i).getTypeValue()))
+            if (typeName.equalsIgnoreCase(typeList.get(i).getErrorTypeKey()))
                 return typeList.get(i);
         }
         return null;
