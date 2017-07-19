@@ -7,7 +7,8 @@ import android.support.v7.preference.PreferenceManager;
 
 import com.example.networklibrary.shared_preferences.PermanentPreferences;
 
-import static com.example.networklibrary.DefaultErrorTypes.typeList;
+import java.util.ArrayList;
+
 
 
 /**
@@ -20,13 +21,15 @@ public class NetworkLibrary {
 
     private Context context;
     private PreferenceManager privateManager;
+    public static ArrayList<ErrorType> typeList;
 
     public static void init(Context context, String baseurl, ErrorType... type) {
         if (instance == null) {
             instance = new NetworkLibrary(context, baseurl);
+            typeList = new ArrayList<>();
 
-            for (int i = 0; i < type.length; i++) {
-                addNewErrorTypes(type[i]);
+            for (ErrorType errorType : type) {
+                addNewErrorTypes(errorType);
             }
         }
     }
@@ -55,14 +58,6 @@ public class NetworkLibrary {
         privateManager.setSharedPreferencesMode(Context.MODE_PRIVATE);
         privateManager.setStorageDeviceProtected();
         privateManager.getSharedPreferences().edit().putString(PermanentPreferences.BASE_URL, baseurl).apply();
-    }
-
-    public static void restartApp() {
-        if (instance != null) {
-            Intent intent = instance.context.getPackageManager().getLaunchIntentForPackage(instance.context.getPackageName());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            instance.context.startActivity(intent);
-        }
     }
 
     public static void setBaseUrl(String baseUrl) {

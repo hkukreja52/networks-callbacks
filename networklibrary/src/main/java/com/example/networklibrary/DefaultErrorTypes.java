@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.example.networklibrary.NetworkLibrary.typeList;
+
 /**
  * Created by Hemant on 7/12/2017.
  */
@@ -24,8 +26,6 @@ public enum DefaultErrorTypes implements ErrorType {
     @Override public String getErrorTypeKey() {
         return errorTypeKey;
     }
-
-    public static ArrayList<ErrorType> typeList = new ArrayList<>();
 
     static {
         for (ErrorType type : values()) {
