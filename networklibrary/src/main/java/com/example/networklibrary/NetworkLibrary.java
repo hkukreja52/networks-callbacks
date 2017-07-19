@@ -60,6 +60,14 @@ public class NetworkLibrary {
         privateManager.getSharedPreferences().edit().putString(PermanentPreferences.BASE_URL, baseurl).apply();
     }
 
+    public static void restartApp() {
+        if (instance != null) {
+            Intent intent = instance.context.getPackageManager().getLaunchIntentForPackage(instance.context.getPackageName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            instance.context.startActivity(intent);
+        }
+    }
+
     public static void setBaseUrl(String baseUrl) {
         instance.privateManager.getSharedPreferences().edit().putString(PermanentPreferences.BASE_URL, baseUrl).apply();
     }
